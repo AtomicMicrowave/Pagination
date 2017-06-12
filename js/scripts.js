@@ -23,16 +23,19 @@ function createLinks() {
     for (let i = 1; i <= pageCount; i += 1) {
         let createLi = document.createElement("li");
         let createLink = document.createElement("a");
-        createLink.href = "#";
+        createLink.href = "#" + i;
         createLink.textContent = i;
         createLi.append(createLink);
         createUl.append(createLi);
         $sitePage.append(createUl);
     }
-    const $pageTabs = $(".pagination ul li");
-    $($pageTabs).click(() => {
-        return $(showPage(i));
-    });
+    for (let i = 0; i < pageCount; i += 1) {
+        const $pageTabs = $(".pagination ul li");
+        $pageTabs.click(() => {
+            showpage(i).className = "active";
+            return showPage(i);
+        });
+    }
 }
 createLinks();
 
